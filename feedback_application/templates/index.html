@@ -1,0 +1,106 @@
+<html>
+<head>
+	<link rel="icon" href="">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<style>
+
+			.bigger {
+				height: 100px;
+			}
+
+			#form {
+				background-color: rgba(173, 170, 191, 0.25);
+				/*box-shadow: 0 0 2px 2px rgba(173, 170, 191, 0.25);*/
+				border-width: 20px;
+				border-radius: 10px;
+				border-color: rgba(173, 170, 191, 1);
+				padding: 5px;
+			}
+
+			.words {
+				padding-top: 5px;
+				padding-right: 0px;
+				padding-left: 0px;
+				margin-right: -10px;
+				margin-left: -10px;
+				text-align: center;
+			}
+
+			.boxes {
+				padding-left: 0px;
+				padding-right: 0px;
+			}
+
+			.required:after {
+				content: " *"; 
+				color: red;
+			}
+		  
+		</style>
+</head>
+
+<body>
+	<div class="container centered" style="padding-left: 200px; padding-right: 200px;padding-top: 10px;">
+		<div class="row">
+			<img src="{{ url_for('static', filename='looker-logo-purple.png') }}" style="width: auto; height: 50px; float: left;margin-bottom: 10px;margin-left: 15px;margin-right: 10px;">
+			<h1 style="float: left;padding-top: 17px;color: #5A2FC2">Feedback Form</h1>
+		</div>
+		<form method="POST" action="">
+					{{ form.hidden_tag() }}
+					<div class="row">
+						<div class="col-6">
+							<h5>{{ form.analyst_name.label(class="form-control-label required") }}</h5>
+							{{ form.analyst_name(class="form-control", required='required') }}
+						</div>
+						<div class="col-6">
+							<h5>{{ form.analyst_email.label(class="form-control-label required") }}</h5>
+							{{ form.analyst_email(class="form-control") }}
+						</div>
+					</div>
+					<fieldset id="form" class="form-group" style="margin-top: 15px;">
+						<div class="form-group">
+							<div class="row" style="width: 100%">
+								<div class="col-1 words" style="margin-left: 0px;">
+							      <h5>{{ form.name.label(class="form-control-label required") }}</h5>
+							    </div>
+							    <div class="col-3 boxes">
+								  {{ form.name(class="form-control", placeholder="Name") }}
+							    </div>
+							    <div class="col-1 words">
+							      <h5>{{ form.job_title.label(class="form-control-label") }}</h5>
+							    </div>
+							    <div class="col-3 boxes">
+								  {{ form.job_title(class="form-control", placeholder="Job Title") }}
+							    </div>
+							    <div class="col-1 words">
+							      <h5>{{ form.company.label(class="form-control-label required") }}</h5>
+							    </div>
+							    <div class="col-3 boxes">
+								  {{ form.company(class="form-control") }}
+							    </div>
+							  </div>
+						</div>
+						<div class="form-group">
+							<h5>{{ form.feedback.label(class="form-control-label required") }}</h5>
+							{{ form.feedback(class="form-control bigger") }}
+						</div>
+						<div class="form-group">
+							<h5>{{ form.use_case.label(class="form-control-label required") }}</h5>
+							{{ form.use_case(class="form-control bigger") }}
+						</div>
+					</fieldset>
+					<div class="form-group">
+							<h5>{{ form.addt_info.label(class="form-control-label") }}</h5>
+							{{ form.addt_info(class="form-control bigger") }}
+						</div>
+					<div class="form-group">
+						{{ form.submit(class="btn btn-success") }}
+					</div>
+		</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
