@@ -1,6 +1,5 @@
 from flask import render_template, url_for, flash, redirect, request
 from feedback_application import application
-from feedback_application.forms import feedback_form
 
 @application.route("/", methods=['POST'])
 def index():
