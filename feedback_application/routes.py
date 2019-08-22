@@ -1,5 +1,12 @@
 from flask import render_template, url_for, flash, redirect, request
 from feedback_application import application
+from apscheduler.schedulers.blocking import BlockingScheduler
+
+sched = BlockingScheduler()
+
+@sched.scheduled_job('interval', minutes=1)
+def update_customers():
+	print('Update customers.')
 
 @application.route("/", methods=['POST'])
 def index():
